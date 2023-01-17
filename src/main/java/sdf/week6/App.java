@@ -73,9 +73,15 @@ public final class App {
 
         MyRunnableInterface<String> concatString = (a, b) -> {return a + b;};
 
+        MyMessagerInterface printString = (a) -> {
+            System.out.println(a);
+        };
+
         System.out.println("add operation: " + addOperation.process(2, 3));
         System.out.println("multiply operation: " + multiplyOperation.process(2, 3));
-
+        System.out.println("concat: " + multiplyOperation.process(2, 3));
+        printString.printMessage("I love lunch");
+        
     }
 
 
