@@ -1,7 +1,12 @@
 package sdf.week6;
 
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 /**
  * Hello world!
@@ -57,6 +62,7 @@ public final class App {
         executorService2.shutdown();
   */   
         
+  /*
         ExecutorService executorService3 = Executors.newCachedThreadPool();
         executorService3.execute(mRI1);
         executorService3.execute(mRI2);
@@ -64,7 +70,9 @@ public final class App {
         executorService3.execute(mRI4);
         executorService3.execute(mRI5);
         executorService3.shutdown();
+ */
 
+ /*
         MyRunnableInterface<Integer> addOperation = (a, b) -> {
             return a + b;
         };
@@ -81,7 +89,46 @@ public final class App {
         System.out.println("multiply operation: " + multiplyOperation.process(2, 3));
         System.out.println("concat: " + multiplyOperation.process(2, 3));
         printString.printMessage("I love lunch");
-        
+    */     
+        //list of employee
+
+        List<Employee> employee = new ArrayList<>();
+        employee.add(new Employee(1, "Aaron", "Cheng", 5000));
+        employee.add(new Employee(2, "Abby", "Chong", 5500));
+        employee.add(new Employee(3, "Ariel", "Ang", 5100));
+        employee.add(new Employee(4, "Aaron", "Ang", 5090));
+        employee.add(new Employee(5, "Xin", "Gong", 5800));
+        employee.add(new Employee(6, "Nian", "Xi", 5890));
+        employee.add(new Employee(7, "Kuai", "Fa", 5888));
+        employee.add(new Employee(8, "Le", "Cai", 8888));
+
+        /*
+        employee.forEach(emp -> {
+            System.out.println(emp);
+        });
+ 
+        System.out.println("Employers whose last name contains 'ch'");
+
+        List<Employee> filteredEmployees = employee.stream().filter(emp -> emp.getLastName().contains("Ch")).collect(Collectors.toList());
+        filteredEmployees.forEach(emp -> System.out.println(emp));
+ */
+
+ /*
+        employee.sort(Comparator.comparing(Employee::getFirstName));
+        employee.forEach(emp -> System.out.println(emp));
+
+        employee.sort(Comparator.comparing(Employee::getFirstName).reversed());
+        employee.forEach(emp -> System.out.println(emp));
+ */
+/*
+        Comparator<Employee> compare = Comparator.comparing(e -> e.getFirstName());
+        employee.sort(compare.reversed());
+        employee.forEach(emp -> System.out.println(emp));
+ */
+        Comparator<Employee> groupByComparator = Comparator.comparing(Employee::getFirstName).thenComparing(Employee::getLastName);
+        employee.sort(groupByComparator);
+        employee.forEach(emp -> System.out.println(emp));
+
     }
 
 
