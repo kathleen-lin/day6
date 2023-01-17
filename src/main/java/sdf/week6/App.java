@@ -57,13 +57,25 @@ public final class App {
         executorService2.shutdown();
   */   
         
-  ExecutorService executorService3 = Executors.newCachedThreadPool();
+        ExecutorService executorService3 = Executors.newCachedThreadPool();
         executorService3.execute(mRI1);
         executorService3.execute(mRI2);
         executorService3.execute(mRI3);
         executorService3.execute(mRI4);
         executorService3.execute(mRI5);
         executorService3.shutdown();
+
+        MyRunnableInterface<Integer> addOperation = (a, b) -> {
+            return a + b;
+        };
+
+        MyRunnableInterface<Integer> multiplyOperation = (a, b) -> { return a * b;};
+
+        MyRunnableInterface<String> concatString = (a, b) -> {return a + b;};
+
+        System.out.println("add operation: " + addOperation.process(2, 3));
+        System.out.println("multiply operation: " + multiplyOperation.process(2, 3));
+
     }
 
 
